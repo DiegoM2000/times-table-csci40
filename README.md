@@ -1,2 +1,2 @@
-# times-table-csci40
-Working Times Table created using c++
+# times-table
+Times Table for addition and multiplication
