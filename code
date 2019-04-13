@@ -1,0 +1,81 @@
+#include <iostream>
+using namespace std;
+
+void die() {
+	cout << "BAD INPUT!" << endl;
+	exit(1);
+}
+void printHeader(int min, int max) { //Prints first row from min to max
+	for (int firstrow = min; firstrow <= max; firstrow++) {
+		cout << "\t" << firstrow;
+	}
+	cout << endl;
+}
+
+int main() {
+	const int ADD = 1;
+	const int MULTIPLY = 2;
+	const int MAX_SIZE = 20; //At most a 20x20 table
+	int choice = 0, min = 0, max = 0;
+	cout << "Choose:\n";
+	cout << "1. Addition Table\n";
+	cout << "2. Times Table\n";
+	cin >> choice;  //YOU: Input choice here, and vet it for correctness
+	if (!cin) die(); //Prints "BAD INPUT!" and quits.
+	if (choice < 1 or choice > 2) die();
+
+	if (choice == 1) { //Addition
+
+		cout << "Please enter the smallest number on the table:\n";
+		cin >> min; //Input min here, and make sure cin is not false
+
+		cout << "Please enter the largest number on the table:\n";
+		cin >> max;  //Input max here
+		if (max - min + 1 > MAX_SIZE) die();
+		if (max < min) die();
+
+		cout << "+"; //Prints "+" sign
+
+		for (int i = min; i <= max; i++) { //Run as long as i less than or equal to max.
+			if (i == min) {
+				printHeader(min, max); //Prints firstrow from min to max
+			}
+			for (int c = min; c <= max; c++) { //Run as long as c is less than or equal to max
+				if (c == min) {
+					cout << i << "\t"; //If c is equal to min, output i.
+				}
+				cout << i + c << "\t"; //Output i + c and tab.
+			}
+			cout << endl; //End row and repeat for loop
+		}
+		cout << endl; //End of loop
+		exit(0); //and exits the program
+	}
+	if (choice == 2) { //Multiplication
+
+		cout << "Please enter the smallest number on the table:\n";
+		cin >> min; //Input min here, and make sure cin is not false
+
+		cout << "Please enter the largest number on the table:\n";
+		cin >> max;  //Input max here
+		if (max - min + 1 > MAX_SIZE) die();
+		if (max < min) die();
+
+		cout << "X"; //Prints "+" sign
+
+		for (int i = min; i <= max; i++) { //Run as long as i less than or equal to max.
+			if (i == min) {
+				printHeader(min, max); //Prints firstrow from min to max
+			}
+			for (int c = min; c <= max; c++) { //Run as long as c is less than or equal to max
+				if (c == min) {
+					cout << i << "\t"; //If c is equal to min, output i.
+				}
+				cout << i * c << "\t"; //Output i * c and tab.
+			}
+			cout << endl; //End row and repeat for loop
+		}
+		cout << endl; //End of loop
+		exit(0); //and exits the program
+	}
+}
